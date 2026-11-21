@@ -15,16 +15,16 @@
 		<div
 			in:fly={{ y: 20, duration: 800 }}
 			id="myDiv"
-			class="flex h-auto w-full flex-col justify-center overflow-auto bg-white/30 p-10 shadow-sm md:w-140 md:justify-between md:rounded-md"
+			class="flex h-auto w-full flex-col justify-center overflow-auto p-10 shadow-sm md:w-140 md:justify-between md:rounded-md dark:bg-zinc-900/50 dark:text-zinc-300"
 		>
 			<!-- logo  -->
-			<div class="mb-5 flex h-auto w-full flex-col text-center">
+			<div class="mb-5 flex h-auto w-full flex-col text-center dark:text-zinc-100">
 				<div>
 					<span class="inline-flex items-center text-lg">
 						<span class="text-lg font-semibold">@apranthilaka</span>
 					</span>
 				</div>
-				<div>Product Design Engineer (UI/UX)</div>
+				<div class="dark:text-orange-600">Product Design Engineer (UI/UX)</div>
 			</div>
 			<!-- logo  -->
 
@@ -44,7 +44,7 @@
 					href="https://dribbble.com/aravinda"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					<!-- <i class="ph ph-dribbble-logo" aria-hidden="true"></i> -->
 					Design
@@ -53,7 +53,7 @@
 					href="https://components.apranthilaka.workers.dev/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					Development
 				</a>
@@ -61,7 +61,7 @@
 					href="https://www.linkedin.com/in/aravindaprabath/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					<!-- <i class="ph ph-linkedin-logo" aria-hidden="true"></i> -->
 					LinkedIn
@@ -80,7 +80,7 @@
 					href="https://wa.me/94777499801"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					<!-- <i class="ph ph-file-text" aria-hidden="true"></i> CV -->
 					Whatsapp
@@ -90,7 +90,7 @@
 					href="https://t.me/apranthilaka"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					Telegram
 				</a>
@@ -98,7 +98,7 @@
 					href="mailto:apranthilaka@gmail.com,apranthilaka@outlook.com"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:bg-neutral-100 hover:text-neutral-900"
+					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-700 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					<!-- <i class="ph ph-file-text" aria-hidden="true"></i> CV -->
 					Email
