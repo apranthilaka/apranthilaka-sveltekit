@@ -146,7 +146,7 @@
 							<a
 								class={win.disableFigmaLink
 									? 'cursor-not-allowed text-slate-400'
-									: 'text-orange-500 hover:underline'}
+									: 'text-slate-900 hover:underline dark:text-orange-500'}
 								target="_blank"
 								href={win.figmaLink}
 							>
@@ -156,11 +156,11 @@
 								// class:disableDevLink={win.disableDevLink}
 								class={win.disableDevLink
 									? 'cursor-not-allowed text-slate-400'
-									: 'text-orange-500 hover:underline'}
+									: 'text-slate-900 hover:underline dark:text-orange-500'}
 								target="_blank"
 								href={win.devLink}
 							>
-								Live
+								Code
 							</a>
 						</div>
 					</div>
