@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	import { ArrowRight, CircleCheck } from '@lucide/svelte';
 	import { fly } from 'svelte/transition';
 
 	let animationState = $state(false);
@@ -7,42 +8,77 @@
 		animationState = true;
 	});
 
-	let quickWins = $state([
+	let quickWins = $state<
+		Array<{
+			projectName: string;
+			figmaLink: string;
+			devLink: string;
+			isDesignProject: boolean;
+			isDevProject: boolean;
+			isProjectActive: boolean | 'complete';
+		}>
+	>([
 		{
-			projectName: 'StackStore',
+			projectName: 'StackStore - Casestudy & Concepts',
 			figmaLink:
 				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=2004-826&viewport=-2124%2C252%2C0.15&t=fsHvNtdhL4gF0ZKc-8&scaling=contain&content-scaling=responsive&starting-point-node-id=1910%3A430&page-id=1834%3A4620&hide-ui=1',
-			devLink: 'https://components.apranthilaka.workers.dev/projectone',
-			disableFigmaLink: false,
-			disableDevLink: false
+			devLink: 'https://components.apranthilaka.workers.dev/stackstore',
+
+			isDesignProject: true,
+			isDevProject: true,
+			isProjectActive: 'complete'
 		},
 		{
-			projectName: 'Metafull',
+			projectName: 'SaaS Pipeline Management Workspace',
 			figmaLink:
-				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=2042-2122&viewport=590%2C422%2C0.25&t=jrI4MoCWCYDFPbN2-8&scaling=contain&content-scaling=responsive&page-id=0%3A1&hide-ui=1',
-			devLink: 'https://components.apranthilaka.workers.dev/projectone',
-			disableFigmaLink: true,
-			disableDevLink: true
+				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-14051&viewport=215%2C487%2C0.45&t=MGgVuDyUQZHEUZWa-8&scaling=contain&content-scaling=responsive&page-id=0%3A1&hide-ui=1',
+			devLink: '#',
+
+			isDevProject: false,
+			isDesignProject: true,
+			isProjectActive: true
 		},
 		{
-			projectName: 'StackStore3',
+			projectName: 'Obrand - Internal mail client',
 			figmaLink:
-				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=2004-826&viewport=-2124%2C252%2C0.15&t=fsHvNtdhL4gF0ZKc-8&scaling=contain&content-scaling=responsive&starting-point-node-id=1910%3A430&page-id=1834%3A4620&hide-ui=1',
-			devLink: 'https://components.apranthilaka.workers.dev/projectone',
-			disableFigmaLink: true,
-			disableDevLink: true
+				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-12235&viewport=-337%2C-104%2C0.44&t=lryQMfwUEfq7UQvd-8&scaling=contain&content-scaling=responsive&page-id=1914%3A4181&hide-ui=1',
+			devLink: '#',
+
+			isDesignProject: true,
+			isDevProject: false,
+			isProjectActive: true
+		},
+		{
+			projectName: 'Kaleora - User Onboarding Flow',
+			figmaLink:
+				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-15178&t=QqyKXTZeYd1Dd9uV-8&scaling=contain&content-scaling=responsive&page-id=1914%3A7342&hide-ui=1',
+			devLink: '#',
+
+			isDesignProject: true,
+			isDevProject: false,
+			isProjectActive: true
+		},
+		{
+			projectName: 'Dribbble - Archived Projects (2026 and Earlier)',
+			figmaLink: 'https://dribbble.com/aravinda',
+			devLink: '#',
+
+			isDesignProject: true,
+			isDevProject: false,
+
+			isProjectActive: 'complete'
 		}
 	]);
 </script>
 
 <div
-	class="modern-scrollbar flex h-screen w-full overflow-y-auto bg-cover bg-center bg-no-repeat text-center text-sm text-neutral-600 md:items-center md:justify-center md:p-2"
+	class="hide-scrollbar flex h-full flex-1 items-start justify-center overflow-y-auto bg-cover bg-center bg-no-repeat text-center text-neutral-600 md:items-center md:justify-center md:pb-0"
 >
 	{#if animationState}
 		<div
 			in:fly={{ y: 20, duration: 800 }}
 			id="myDiv"
-			class="flex h-auto w-full flex-col justify-center overflow-auto p-5 md:w-140 md:justify-between"
+			class="flex h-max w-full shrink-0 flex-col items-center justify-start p-5 md:w-140 md:justify-center lg:items-center"
 		>
 			<!-- logo  -->
 			<div class="mb-5 flex h-auto w-full flex-col text-center">
@@ -56,43 +92,125 @@
 
 			<!-- Intro  -->
 			<div class="mb-8 w-full">
-				<div class="dark:text-zinc-400">
+				<div class="text-base text-sm leading-5 dark:text-zinc-400">
 					Hey, I'm Aravinda. I design and build digital products people actually enjoy using.
-					Currently vailable for remote full-time roles and contract collaborations with companies
+					Currently available for remote full-time roles and contract collaborations with companies
 					and startups.
 				</div>
 			</div>
 			<!-- Intro  -->
 
+			<!-- projects  -->
+			<div class=" flex w-full flex-col items-start justify-start">
+				<!-- <p class=" mb-2 text-sm dark:text-zinc-600">Latest Projects</p> -->
+				{#each quickWins as win (win.projectName)}
+					<div
+						class="flex h-10 w-full flex-row items-center justify-between border-b border-slate-300 dark:border-b-zinc-900 dark:text-zinc-400"
+					>
+						<div class="text-sm">{win.projectName}</div>
+						<div class="inline-flex gap-2">
+							{#if win.isDevProject && win.isDesignProject}
+								<a
+									target="_blank"
+									class={win.isProjectActive
+										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
+										: 'cursor-not-allowed text-sm text-slate-400'}
+									href={win.figmaLink}
+								>
+									Design <span class="mt-[3px]"><ArrowRight size={13} /></span>
+								</a>
+								<a
+									target="_blank"
+									class={win.isProjectActive
+										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
+										: 'cursor-not-allowed text-sm text-slate-400'}
+									href={win.devLink}
+								>
+									Development
+								</a>
+								{#if win.isProjectActive === 'complete'}
+									<span class="mt-[3px] text-orange-600 dark:text-green-600">
+										<CircleCheck size={15} />
+									</span>
+								{/if}
+							{:else if win.isDesignProject}
+								<a
+									target="_blank"
+									class={win.isProjectActive
+										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
+										: 'cursor-not-allowed text-sm text-slate-400'}
+									href={win.figmaLink}
+								>
+									Design
+								</a>
+
+								{#if win.isProjectActive === 'complete'}
+									<span class="mt-[3px] text-orange-600 dark:text-green-600">
+										<CircleCheck size={15} />
+									</span>
+								{:else}
+									<span class="mt-[3px]"><ArrowRight size={13} /></span>
+								{/if}
+							{:else if win.isDevProject === true}
+								<a
+									target="_blank"
+									class={win.isProjectActive
+										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
+										: 'cursor-not-allowed text-sm text-slate-400'}
+									href={win.devLink}
+								>
+									Development
+								</a>
+								{#if win.isProjectActive === 'complete'}
+									<span class="mt-[3px] text-orange-600 dark:text-green-600">
+										<CircleCheck size={15} />
+									</span>
+								{:else}
+									<span class="mt-[3px]"><ArrowRight size={13} /></span>
+								{/if}
+							{/if}
+						</div>
+					</div>
+				{/each}
+			</div>
+			<!-- projects  -->
+
 			<!-- main links  -->
 			<div
-				class="grid w-full grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2 md:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]"
+				class="mt-10 grid h-auto w-full grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2 md:grid-cols-[repeat(auto-fit,minmax(100px,1fr))]"
 			>
 				<a
 					href="https://dribbble.com/aravinda"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
+					class="flex h-fit w-full items-center justify-center rounded-full border border-neutral-300 px-3 py-2 text-sm hover:text-neutral-900 dark:border-zinc-800 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
-					<!-- <i class="ph ph-dribbble-logo" aria-hidden="true"></i> -->
-					Design
+					Quick Wins
 				</a>
 				<a
 					href="https://components.apranthilaka.workers.dev/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
+					class="flex h-fit w-full items-center justify-center rounded-full border border-neutral-300 px-3 py-2 text-sm hover:text-neutral-900 dark:border-zinc-800 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
-					Development
+					Dev Lab
 				</a>
 				<a
 					href="https://www.linkedin.com/in/aravindaprabath/"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
+					class="flex h-fit w-full items-center justify-center rounded-full border border-neutral-300 px-3 py-2 text-sm hover:text-neutral-900 dark:border-zinc-800 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
-					<!-- <i class="ph ph-linkedin-logo" aria-hidden="true"></i> -->
 					LinkedIn
+				</a>
+
+				<a
+					href="mailto:apranthilaka@gmail.com,apranthilaka@outlook.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex h-fit w-full items-center justify-center rounded-full border border-neutral-300 px-3 py-2 text-sm hover:text-neutral-900 dark:border-zinc-800 dark:text-zinc-400 hover:dark:text-zinc-200"
+				>
+					Get in contact
 				</a>
 
 				<!-- <a
@@ -104,16 +222,15 @@
           Github
         </a> -->
 
-				<a
+				<!-- <a
 					href="https://wa.me/94777499801"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
-					<!-- <i class="ph ph-file-text" aria-hidden="true"></i> CV -->
 					Whatsapp
-				</a>
-
+				</a> -->
+				<!--
 				<a
 					href="https://t.me/apranthilaka"
 					target="_blank"
@@ -121,61 +238,26 @@
 					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
 					Telegram
-				</a>
-				<a
-					href="mailto:apranthilaka@gmail.com,apranthilaka@outlook.com"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="flex h-fit w-full items-center justify-center rounded-sm border border-neutral-300 px-3 py-2 hover:text-neutral-900 dark:border-zinc-900 dark:text-zinc-400 hover:dark:text-zinc-200"
-				>
-					<!-- <i class="ph ph-file-text" aria-hidden="true"></i> CV -->
-					Email
-				</a>
+				</a> -->
 			</div>
 			<!-- main links   -->
-
-			<!-- projects  -->
-			<div class="mt-10 flex w-full flex-col items-start justify-start">
-				<!-- <p class="mt-5 mb-2 text-sm dark:text-zinc-600">Latest Projects</p> -->
-				{#each quickWins as win (win.projectName)}
-					<div
-						class="flex h-10 w-full flex-row items-center justify-between border-b border-slate-300 dark:border-b-zinc-900 dark:text-zinc-400"
-					>
-						<div>{win.projectName}</div>
-						<div class="inline-flex gap-4">
-							<a
-								class={win.disableFigmaLink
-									? 'cursor-not-allowed text-slate-400'
-									: 'text-slate-900 hover:underline dark:text-orange-500'}
-								target="_blank"
-								href={win.figmaLink}
-							>
-								Figma
-							</a>
-							<a
-								// class:disableDevLink={win.disableDevLink}
-								class={win.disableDevLink
-									? 'cursor-not-allowed text-slate-400'
-									: 'text-slate-900 hover:underline dark:text-orange-500'}
-								target="_blank"
-								href={win.devLink}
-							>
-								Code
-							</a>
-						</div>
-					</div>
-				{/each}
-			</div>
-			<!-- projects  -->
 		</div>
 	{/if}
 </div>
 
 <style>
-	.disableFigmaLink {
+	/* .disableFigmaLink {
 		cursor: not-allowed;
 	}
 	.disableDevLink {
 		cursor: not-allowed;
+	} */
+
+	.hide-scrollbar {
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* old Edge/IE */
+	}
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none; /* Chrome, Safari, mobile browsers */
 	}
 </style>
