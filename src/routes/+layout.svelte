@@ -27,7 +27,7 @@
 	>
 		<div class="text-xs text-neutral-500">Powered by</div>
 		<a
-			class="text-xs text-orange-600 capitalize"
+			class="mt-1 text-xs text-orange-600 capitalize"
 			href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1"
 		>
 			Claude AI Sites
