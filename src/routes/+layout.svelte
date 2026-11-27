@@ -23,14 +23,22 @@
 		{@render children()}
 	</main>
 	<footer
-		class="hidden flex-col items-center justify-center pb-7 text-sm text-slate-900 md:flex dark:text-zinc-500"
+		class=" flex flex-col items-center justify-center pb-7 text-sm text-slate-900 dark:text-zinc-500"
 	>
-		<div class="text-xs text-neutral-500">Powered by</div>
+		<div>
+			<a
+				class="text-sm hover:font-medium hover:text-neutral-950 dark:text-orange-500"
+				href="https://x.com/apranthilaka"
+			>
+				Twitter/X
+			</a>
+		</div>
+		<!-- <div class="text-xs text-neutral-500">Powered by</div>
 		<a
 			class="mt-1 text-xs text-orange-600 capitalize"
 			href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1"
 		>
 			Claude AI Sites
-		</a>
+		</a> -->
 	</footer>
 </div>

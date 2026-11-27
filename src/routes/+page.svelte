@@ -128,7 +128,7 @@
 					rel="noopener noreferrer"
 					class="flex h-fit w-full items-center justify-center border border-neutral-300 px-3 py-2 text-sm hover:text-neutral-900 dark:border-zinc-800 dark:text-zinc-400 hover:dark:text-zinc-200"
 				>
-					Dev Lab
+					DevLab
 				</a>
 				<a
 					href="https://www.linkedin.com/in/aravindaprabath/"
