@@ -12,61 +12,40 @@
 		Array<{
 			projectName: string;
 			figmaLink: string;
-			devLink: string;
-			isDesignProject: boolean;
-			isDevProject: boolean;
-			isProjectActive: boolean | 'complete';
+			isProjectComplete: boolean;
 		}>
 	>([
 		{
 			projectName: 'E-Com Layouts & Components',
 			figmaLink:
 				'https://www.figma.com/proto/Z1GQBa5WjvRMWcOXVUIdq4/Twitter---Neutral?node-id=62-611&viewport=-1140%2C617%2C0.37&t=IZn7f1pFv932tu9o-8&scaling=contain&content-scaling=responsive&page-id=59%3A1032&hide-ui=1',
-			devLink: '#',
 
-			isDesignProject: true,
-			isDevProject: false,
-			isProjectActive: true
+			isProjectComplete: false
 		},
 		{
 			projectName: 'StackStore - Casestudy & Concepts',
 			figmaLink:
 				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=2004-826&viewport=-2124%2C252%2C0.15&t=fsHvNtdhL4gF0ZKc-8&scaling=contain&content-scaling=responsive&starting-point-node-id=1910%3A430&page-id=1834%3A4620&hide-ui=1',
-			devLink: 'https://components.apranthilaka.workers.dev/stackstore',
 
-			isDesignProject: true,
-			isDevProject: false,
-			isProjectActive: true
+			isProjectComplete: true
 		},
 		{
 			projectName: 'SaaS Pipeline Management Workspace',
 			figmaLink:
 				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-14051&viewport=215%2C487%2C0.45&t=MGgVuDyUQZHEUZWa-8&scaling=contain&content-scaling=responsive&page-id=0%3A1&hide-ui=1',
-			devLink: '#',
-
-			isDevProject: false,
-			isDesignProject: true,
-			isProjectActive: true
+			isProjectComplete: false
 		},
 		{
 			projectName: 'Obrand - Internal mail client',
 			figmaLink:
 				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-12235&viewport=-337%2C-104%2C0.44&t=lryQMfwUEfq7UQvd-8&scaling=contain&content-scaling=responsive&page-id=1914%3A4181&hide-ui=1',
-			devLink: '#',
-
-			isDesignProject: true,
-			isDevProject: false,
-			isProjectActive: true
+			isProjectComplete: false
 		},
 		{
 			projectName: 'Kaleora - User Onboarding Flow',
 			figmaLink:
 				'https://www.figma.com/proto/OiECY5HRCcUmrRlP5ZVQXa/Desktop-Designs?node-id=1917-15178&t=QqyKXTZeYd1Dd9uV-8&scaling=contain&content-scaling=responsive&page-id=1914%3A7342&hide-ui=1',
-			devLink: '#',
-
-			isDesignProject: true,
-			isDevProject: false,
-			isProjectActive: true
+			isProjectComplete: false
 		}
 	]);
 </script>
@@ -107,68 +86,24 @@
 					<div
 						class="flex h-10 w-full flex-row items-center justify-between border-b border-slate-300 dark:border-b-zinc-900 dark:text-zinc-400"
 					>
-						<div class="text-sm">{win.projectName}</div>
-						<div class="inline-flex gap-2">
-							{#if win.isDevProject && win.isDesignProject}
-								<a
-									target="_blank"
-									class={win.isProjectActive
-										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
-										: 'cursor-not-allowed text-sm text-slate-400'}
-									href={win.figmaLink}
-								>
-									Design <span class="mt-[3px]"><ArrowRight size={13} /></span>
-								</a>
-								<a
-									target="_blank"
-									class={win.isProjectActive
-										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
-										: 'cursor-not-allowed text-sm text-slate-400'}
-									href={win.devLink}
-								>
-									Development
-								</a>
-								{#if win.isProjectActive === 'complete'}
-									<span class="mt-[3px] text-orange-600 dark:text-green-600">
-										<CircleCheck size={15} />
-									</span>
-								{/if}
-							{:else if win.isDesignProject}
-								<a
-									target="_blank"
-									class={win.isProjectActive
-										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline hover:underline dark:text-orange-500 dark:no-underline'
-										: 'cursor-not-allowed text-sm text-slate-400'}
-									href={win.figmaLink}
-								>
-									Design
-								</a>
-
-								{#if win.isProjectActive === 'complete'}
-									<span class="mt-[3px] text-orange-600 dark:text-green-600">
-										<CircleCheck size={15} />
-									</span>
-								{:else}
-									<span class="mt-[3px]"><ArrowRight size={13} /></span>
-								{/if}
-							{:else if win.isDevProject === true}
-								<a
-									target="_blank"
-									class={win.isProjectActive
-										? 'flex flex-row  items-center gap-2 text-sm text-slate-900 underline dark:text-orange-500 dark:no-underline'
-										: 'cursor-not-allowed text-sm text-slate-400'}
-									href={win.devLink}
-								>
-									Development
-								</a>
-								{#if win.isProjectActive === 'complete'}
-									<span class="mt-[3px] text-orange-600 dark:text-green-600">
-										<CircleCheck size={15} />
-									</span>
-								{:else}
-									<span class="mt-[3px]"><ArrowRight size={13} /></span>
-								{/if}
+						<div class="flex flex-row items-center gap-2 text-sm">
+							<div>
+								{win.projectName}
+							</div>
+							{#if win.isProjectComplete}
+								<span class="mt-1 text-green-700 dark:text-green-500">
+									<CircleCheck size="14" />
+								</span>
 							{/if}
+						</div>
+						<div class="flex flex-row items-center gap-1">
+							<a
+								class="text-sm underline hover:font-medium hover:text-neutral-950 dark:text-orange-500"
+								target="_blank"
+								href={win.figmaLink}
+							>
+								View Design
+							</a>
 						</div>
 					</div>
 				{/each}
